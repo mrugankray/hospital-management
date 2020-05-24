@@ -1,0 +1,27 @@
+{% extends "users/base.html" %}
+{% block content %}
+    {% for prescription in prescriptions_list %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ prescription.published_date|date:"F d, y" }}</a>
+            </div>
+            <h2>
+                <a class="article-title" href="#">
+                    Symptoms: {{ prescription.symptoms }}
+                </a>
+            </h2>
+              <h2>
+                <a class="article-title" href="#">
+                    Prescription: {{ prescription.prescription }}
+                </a>
+            </h2>
+              <h2>
+                <a class="article-title" href="#">
+                    Patient Name: {{ prescription.patient_fullname }}
+                </a>
+            </h2>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content%}

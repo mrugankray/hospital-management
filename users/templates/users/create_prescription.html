@@ -1,0 +1,19 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <form method="POST" action="" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <select name="patient_username">
+                    {% for pat_usr_name in patient_list %}
+                        <option value="{{ pat_usr_name.user.username }}">{{ pat_usr_name.user.first_name }}
+                            {{ pat_usr_name.user.last_name }}</option>
+                    {% endfor %}
+                </select>
+                <legend class="border-bottom mb-4">Prescription</legend>
+                {{ form.as_p}}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Create Prescription</button>
+            </div>
+    </form>
+{% endblock content%}
